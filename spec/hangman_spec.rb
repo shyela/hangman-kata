@@ -19,28 +19,44 @@ RSpec.describe 'Hangman' do
   end
 
   describe 'game state' do
-    it 'should know characters guessed' do
-      game = HangmanGame.new
-      game.guess('a')
-      expect(game.guesses).to include('a')
+    describe 'guess logic' do
+      it 'should know characters guessed' do
+        game = HangmanGame.create
+        game.guess('a')
+        expect(game.guesses).to include('a')
 
-      game.guess('b')
-      expect(game.guesses).to include('a')
-      expect(game.guesses).to include('b')
+        game.guess('b')
+        expect(game.guesses).to include('a')
+        expect(game.guesses).to include('b')
+      end
+
+      it 'should starts with no guesses' do
+        game = HangmanGame.create
+        expect(game.guesses.count).to eq(0)
+      end
+
+      it 'should not ignore duplicated guesses' do
+        game = HangmanGame.create
+        game.guess('a')
+        game.guess('a')
+
+        expect(game.guesses).to include('a')
+        expect(game.guesses.count).to eq(1)
+      end
     end
 
-    it 'should starts with no guesses' do
-      game = HangmanGame.new
-      expect(game.guesses.count).to eq(0)
-    end
+    describe 'pick word' do
+      it 'should pick a word when the game is started' do
+        word_list = %w(aardvark coeffect foolish yeoman)
+        word_number = 2
+        expected_word = 'coeffect'
 
-    it 'should not ignore duplicated guesses' do
-      game = HangmanGame.new
-      game.guess('a')
-      game.guess('a')
+        game = HangmanGame.createNull word_list, word_number
+        game.start
 
-      expect(game.guesses).to include('a')
-      expect(game.guesses.count).to eq(1)
+        expect(game.word).to eq(expected_word)
+      end
+
     end
   end
 
