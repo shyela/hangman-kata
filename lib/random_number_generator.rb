@@ -23,6 +23,10 @@ class NullRandom
   end
 
   def rand(max)
+    if @result > max
+      raise ArgumentError.new 'result is larger than max value'
+    end
     @result
   end
 end
+
