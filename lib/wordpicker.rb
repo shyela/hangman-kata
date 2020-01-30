@@ -9,9 +9,8 @@ class RandomWordPicker
     RandomWordPicker.new file_reader, number_generator
   end
 
-  def self.createNull(word_list = nil, word_number = nil)
-    file_reader = word_list.nil? ? WordsFileReader.createNull : WordsFileReader.createNull(word_list)
-    number_generator = word_number.nil? ? RandomNumberGenerator.createNull : RandomNumberGenerator.createNull(word_number)
+  def self.createNull(file_reader = WordsFileReader.createNull,
+                      number_generator = RandomNumberGenerator.createNull)
     RandomWordPicker.new file_reader, number_generator
   end
 

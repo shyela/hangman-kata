@@ -47,14 +47,12 @@ RSpec.describe 'Hangman' do
 
     describe 'pick word' do
       it 'should pick a word when the game is started' do
-        word_list = %w(aardvark coeffect foolish yeoman)
-        word_number = 2
-        expected_word = 'coeffect'
+        game = HangmanGame.createNull
+        expect(game.word).to be_falsey
 
-        game = HangmanGame.createNull word_list, word_number
         game.start
 
-        expect(game.word).to eq(expected_word)
+        expect(game.word).to be_truthy
       end
 
     end

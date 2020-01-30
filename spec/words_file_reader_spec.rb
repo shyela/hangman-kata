@@ -1,7 +1,7 @@
 require 'words_file_reader'
 
 RSpec.describe 'WordsFileReader' do
-  FILE_CONTENTS = %w(aa aal aalii aam Aani aardvark aardwolf)
+  FILE_CONTENTS = %W(aa\n aal\n aalii\n aam\n Aani\n aardvark\n aardwolf\n)
 
   it "should return the specified word from the words file" do
     word_line_number = 3

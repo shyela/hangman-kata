@@ -7,9 +7,7 @@ class HangmanGame
     HangmanGame.new picker
   end
 
-  def self.createNull(word_list = %w(anthill crummy goliath wowza),
-                      word_number = 2)
-    picker = RandomWordPicker.createNull word_list, word_number
+  def self.createNull(picker = RandomWordPicker.createNull)
     HangmanGame.new picker
   end
 

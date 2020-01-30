@@ -5,7 +5,7 @@ class WordsFileReader
     WordsFileReader.new File
   end
 
-  def self.createNull(file_contents = %w(millennial nincompoop philately))
+  def self.createNull(file_contents = %W(millennial\n nincompoop\n philately\n))
     file_module = NullFileModule.new file_contents
     WordsFileReader.new file_module
   end
